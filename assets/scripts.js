@@ -1,12 +1,30 @@
-let currentPrice=0, itemCount=0
+
+const cart = {
+    currentPrice: 0,
+    items: [],
+    addItem: function(cookie, price) {
+        // add a cookie (string) to the items array
+        this.items.push(cookie)
+
+        //add the price (number) to the currentPrice properties
+        this.currentPrice= this.currentPrice + price 
+
+
+    },
+    clear: function() {
+        //reset the currentPrice and items properties
+        this.currentPrice= 0
+        this.items= []
+    }
+}
 
 function addToCart(cookie) {
     /* 
         PRICES
-        brownie: 25
-        sugar: 15
-        pecan: 20
-        M&M's: 30
+        brownie: 20
+        sugar: 30
+        pecan: 35
+        M&M's: 25
     */
    
    console.log('User is adding a cookie to the cart: ' , cookie) 
@@ -29,20 +47,23 @@ function addToCart(cookie) {
 }
 
    document.querySelector(".hoverText").innerHTML = currentPrice
-
-   console.log(currentPrice)
+   console.log(cart)
+   document.getElementById("cartItems").innerHTML= cart.currentPrice
 }
 
 function checkout() {
     console.log('User is checking out.')
     //Let your customer know what they are purchasing and what the price is
 
+    window.alert(`Item Count: ${cart.items.length} Total Cost: ${cart.currentPrice}`)
     prompt(`What is your Name and Address so we can ship your items to you?`)
+    cart.clear()
     currentPrice = 0
     itemCount = 0
 
-    document.getElementById("cartItems").innerHTML= itemCount
-    document.querySelector(".hoverText").innerHTML = currentPrice
+    document.querySelector(".hoverText").innerHTML = cart.currentPrice
+    console.log(cart)
+    document.getElementById("cartItems").innerHTML= cart.items.length
 
 }
 
