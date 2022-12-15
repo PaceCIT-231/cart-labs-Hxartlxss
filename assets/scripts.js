@@ -13,6 +13,9 @@ function addToCart(cookie) {
 
    itemCount = itemCount + 1
    console.log(itemCount)
+
+   document.getElementById("cartItems").innerHTML= itemCount
+
    //add 1 to the itemCount variable
    //add the right price to the currentPrice variable
    if (cookie == "brownie") {
@@ -25,12 +28,26 @@ function addToCart(cookie) {
     currentPrice = currentPrice + 25
 }
 
+   document.querySelector(".hoverText").innerHTML = currentPrice
 
    console.log(currentPrice)
 }
 
 function checkout() {
-    console.log('User is checking out cookies.')
-    //Let your customer know how much they are buying and the total price
-    window.alert(`Item Count: ${itemCount} Total Cost: ${currentPrice}`)
+    console.log('User is checking out.')
+    //Let your customer know what they are purchasing and what the price is
+
+    prompt(`What is your Name and Address so we can ship your items to you?`)
+    currentPrice = 0
+    itemCount = 0
+
+    document.getElementById("cartItems").innerHTML= itemCount
+    document.querySelector(".hoverText").innerHTML = currentPrice
+
 }
+
+function darkMode() {
+    document.querySelector("body").style.color = "white"
+    document.querySelector("body").style.backgroundColor = "black"
+
+} 
